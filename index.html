@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro RPG GitHub Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .crt-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .crt-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+        .scanlines {
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 255, 0, 0.05) 0.5%,
+                transparent 1%
+            );
+            background-size: 100% 8px;
+        }
+        .pixel-border {
+            border: 4px solid #4a4a4a;
+            box-shadow: inset 0 0 0 4px #4a4a4a, inset 0 0 0 8px #2a2a2a;
+        }
+        .dialog-box {
+            border: 4px solid #4a4a4a;
+            position: relative;
+            background-color: #0f1923;
+            color: #e0e0e0;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+        .dialog-box::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 4px solid #6a6a6a;
+            pointer-events: none;
+        }
+        .pixel-font {
+            font-family: 'Press Start 2P', cursive;
+        }
+        .pixel-avatar {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        .inventory-slot {
+            border: 2px solid #4a4a4a;
+            background-color: #1a1a1a;
+            padding: 0.5rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .inventory-slot:hover {
+            transform: scale(1.05);
+            background-color: #2a2a2a;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        .quest-log {
+            border-left: 4px solid #4a4a4a;
+            padding-left: 1rem;
+            margin-left: 0.5rem;
+        }
+        .quest-active {
+            border-left: 4px solid #4CAF50;
+        }
+        .quest-completed {
+            border-left: 4px solid #9E9E9E;
+            opacity: 0.7;
+        }
+        .quest-new {
+            border-left: 4px solid #FFC107;
+        }
+        .save-point {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .save-point::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4CAF50;
+        }
+        .progress-bar {
+            height: 1rem;
+            background-color: #2a2a2a;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .pixel-corners {
+            clip-path: polygon(
+                0% 12.5%, 12.5% 12.5%, 12.5% 0%, 87.5% 0%, 87.5% 12.5%, 
+                100% 12.5%, 100% 87.5%, 87.5% 87.5%, 87.5% 100%, 12.5% 100%, 
+                12.5% 87.5%, 0% 87.5%
+            );
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-green-100 pixel-font crt-effect scanlines">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <!-- Pixel Art Header -->
+        <div class="pixel-border mb-8 relative overflow-hidden">
+            <div class="bg-gray-800 p-4 flex items-center justify-between">
+                <div class="flex items-center">
+                    <img src="https://img5.pic.in.th/file/secure-sv1/307460108_387435583599238_6386334495691428178_n-removebg-preview.png" 
+                         alt="Pixel Avatar" class="w-16 h-16 pixel-avatar mr-4">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl text-green-400 mb-1">DEVELOPER_NAME</h1>
+                        <p class="text-xs text-gray-400">LVL 99 CODE WIZARD</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-gray-400">HP: ▰▰▰▰▰</p>
+                    <p class="text-xs text-gray-400">MP: ▰▰▰▰▱</p>
+                </div>
+            </div>
+            <div class="bg-gray-900 p-2 text-center text-xs">
+                <p>╔════════════════════════════════════════════════════════════════════════════════════════╗</p>
+                <p>║ WELCOME TO MY RETRO RPG GITHUB PROFILE • PRESS START TO CONTINUE • 1UP = 1 COMMIT      ║</p>
+                <p>╚════════════════════════════════════════════════════════════════════════════════════════╝</p>
+            </div>
+        </div>
+
+        <!-- About Me Section -->
+        <div class="dialog-box mb-8">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/4 flex justify-center mb-4 md:mb-0">
+                    <img src="https://img2.pic.in.th/pic/image-19f4bb7a9e083dc11a.jpg" 
+                         alt="Character Avatar" class="w-32 h-32 pixel-avatar">
+                </div>
+                <div class="md:w-3/4">
+                    <h2 class="text-xl text-green-400 mb-2">ABOUT ME</h2>
+                    <p class="mb-4">"Greetings, traveler! I am a battle-hardened developer who has journeyed through countless code dungeons and emerged victorious. My sword is my keyboard, and my shield is Stack Overflow."</p>
+                    <p class="mb-4">"I specialize in vanquishing bugs and crafting elegant solutions to complex problems. When I'm not coding, you can find me in the tavern sharing war stories with fellow developers."</p>
+                    <div class="flex justify-end">
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-1 text-sm pixel-corners">
+                            PRESS A TO CONTINUE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RPG Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="dialog-box">
+                <h2 class="text-xl text-green-400 mb-4">CHARACTER STATS</h2>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>STR (Frontend)</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>INT (Algorithms)</span>
+                            <span>78%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 78%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>DEX (Debugging)</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>VIT (Backend)</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span>LUK (Git)</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="dialog-box">
+                <h2 class="text-xl text-green-400 mb-4">TECHNICAL SKILLS</h2>
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="inventory-slot">
+                        <div class="text-2xl">⚔️</div>
+                        <div class="text-xs">JavaScript</div>
+                    </div>
+                    <div class="inventory-slot">
+                        <div class="text-2xl">🛡️</div>
+                        <div class="text-xs">React</div>
+                    </div>
+                    <div class="inventory-slot">
+                        <div class="text-2xl">🔮</div>
+                        <div class="text-xs">Node.js</div>
+                    </div>
+                    <div class="inventory-slot">
+                        <div class="text-2xl">🏹</div>
+                        <div class="text-xs">HTML/CSS</div>
+                    </div>
+                    <div class="inventory-slot">
+                        <div class="text-2xl">🧪</div>
+                        <div class="text-xs">Python</div>
+                    </div>
+                    <div class="inventory-slot">
+                        <div class="text-2xl">📜</div>
+                        <div class="text-xs">SQL</div>
+                    </div>
+                    <div class="inventory-slot">
+                        <div class="text-2xl">🔧</div>
+                        <div class="text-xs">Git</div>
+                    </div>
+                    <div class="inventory-slot">
+                        <div class="text-2xl">🧿</div>
+                        <div class="text-xs">Docker</div>
+                    </div>
+                    <div class="inventory-slot">
+                        <div class="text-2xl">🗝️</div>
+                        <div class="text-xs">AWS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quest Log -->
+        <div class="dialog-box mb-8">
+            <h2 class="text-xl text-green-400 mb-4">QUEST LOG</h2>
+            <div class="space-y-4">
+                <div class="quest-log quest-active">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-green-300">[ACTIVE] Build a Retro RPG Portfolio</h3>
+                            <p class="text-sm">Create an interactive portfolio with 16-bit aesthetics to showcase projects.</p>
+                            <div class="flex mt-1">
+                                <span class="text-yellow-400 text-xs mr-2">⭐️⭐️⭐️</span>
+                                <span class="text-xs text-gray-400">React, CSS, JavaScript</span>
+                            </div>
+                        </div>
+                        <span class="bg-green-600 text-white px-2 py-0.5 text-xs pixel-corners">IN PROGRESS</span>
+                    </div>
+                </div>
+                <div class="quest-log quest-completed">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-gray-400">[COMPLETED] E-commerce Dungeon Crawler</h3>
+                            <p class="text-sm">Developed a game-themed e-commerce platform with RPG elements.</p>
+                            <div class="flex mt-1">
+                                <span class="text-yellow-400 text-xs mr-2">⭐️⭐️⭐️⭐️</span>
+                                <span class="text-xs text-gray-400">MERN Stack</span>
+                            </div>
+                        </div>
+                        <span class="bg-gray-600 text-white px-2 py-0.5 text-xs pixel-corners">COMPLETED</span>
+                    </div>
+                </div>
+                <div class="quest-log quest-new">
+                    <div class="flex justify-between items-start
+</html>
